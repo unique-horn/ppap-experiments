@@ -1,7 +1,7 @@
 #+TITLE: Experiments
 
 * Masking
-
+** Image classification
 * Filter generation
-
+** Image classification
 * Output generation
