@@ -9,5 +9,6 @@
     - Normalizing the generated weights
 *** Strategy to prevent local minima
 ** Image classification
-*** MNIST: 92% on val, having two ppconv layers, with 1 dense layer in the end.
+*** MNIST:
+    - 92% on val, having two ppconv layers, with 1 dense layer in the end.
 * Output generation
