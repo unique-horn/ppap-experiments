@@ -1,7 +1,10 @@
 #+TITLE: Experiments
 
 * Masking
-** Image classification
+** Try on CIFAR
+** Questions to answer
+*** Can I use the masked representation of datasets to create `Minimal training set`?
+*** Can this minimal training set network work with full data?
 * Filter generation
 ** To add:
 *** Normalization strategy
