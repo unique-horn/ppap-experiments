@@ -1,6 +1,7 @@
 #+TITLE: Experiments
 
 * Masking
+** Cut off activation by ThreshU
 ** Use full color CIFAR
 ** Generate and plot class specific masks
 ** Questions to answer
