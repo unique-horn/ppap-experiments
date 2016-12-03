@@ -1,7 +1,10 @@
 #+TITLE: Experiments
 
 * Masking
-** Cut off activation by ThreshU
+** Allow streaming dataset in the model
+*** Is there any specific use case for this?
+** Test cheap linear models on masked datasets
+** Compare masks with AEs
 ** Use full color CIFAR
 ** Generate and plot class specific masks
 ** Questions to answer
