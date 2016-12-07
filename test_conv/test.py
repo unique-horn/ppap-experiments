@@ -4,14 +4,14 @@ from keras.optimizers import SGD, adam
 import numpy as np
 
 from keras.utils import np_utils
-from keras.datasets import mnist
+from keras.datasets import cifar10
 from ppap.layers.ppconv import PPConv
 
-img_rows, img_cols = 28, 28
-(X_train, y_train), (X_test, y_test) = mnist.load_data()
-X_train = np.expand_dims(X_train, axis=1)
+img_rows, img_cols = 32, 32
+(X_train, y_train), (X_test, y_test) = cifar10.load_data()
+# X_train = np.expand_dims(X_train, axis=1)
 y_train = np_utils.to_categorical(y_train, 10)
-X_test = np.expand_dims(X_test, axis=1)
+# X_test = np.expand_dims(X_test, axis=1)
 y_test = np_utils.to_categorical(y_test, 10)
 
 X_train = X_train.astype('float32')
@@ -22,12 +22,16 @@ X_test /= 255
 X_train -= np.mean(X_train)
 X_test -= np.mean(X_test)
 
-inputs = Input(shape=(1, 28, 28), name="inputs")
+inputs = Input(shape=(3, 32, 32), name="inputs")
 
 ppconv_1 = PPConv(weight_shape=(3, 3), layer_sizes=[50, 40, 10],
-                  nb_filters=9)(inputs)
+                  nb_filters=9, border_mode="valid")(inputs)
 ppconv_1 =  Activation(activation="relu")(ppconv_1)
 # ppconv_1 = Dropout(p=0.5)(ppconv_1)
+
+# ppconv_1 = PPConv(weight_shape=(3, 3), layer_sizes=[50, 40, 10],
+#                   nb_filters=22, border_mode="valid")(ppconv_1)
+# ppconv_1 =  Activation(activation="relu")(ppconv_1)
 
 ppconv_2 = PPConv(weight_shape=(3, 3), layer_sizes=[50, 40, 10],
                   nb_filters=33)(ppconv_1)
@@ -45,4 +49,4 @@ model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=[
 
 model.summary()
 print (X_train.shape)
-model.fit(x=X_train, y=y_train, nb_epoch=10, validation_data=[X_test, y_test], verbose=1, batch_size=32)
+model.fit(x=X_train, y=y_train, nb_epoch=10, validation_data=[X_test, y_test], verbose=1, batch_size=1024)
