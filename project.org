@@ -1,7 +1,15 @@
 #+TITLE: Experiments
 
 * Masking
-** Image classification
+** Allow streaming dataset in the model
+*** Is there any specific use case for this?
+** Test cheap linear models on masked datasets
+** Compare masks with AEs
+** Use full color CIFAR
+** Generate and plot class specific masks
+** Questions to answer
+*** Can I use the masked representation of datasets to create `Minimal training set`?
+*** Can this minimal training set network work with full data?
 * Filter generation
 ** To add:
 *** Normalization strategy
