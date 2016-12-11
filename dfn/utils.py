@@ -23,5 +23,20 @@ def filters_image(filter_data):
         for j in range(cols):
             image[fs * i:fs * (i + 1), fs * j:fs * (j + 1)] = filter_data[:, :,
                                                                           i, j]
-
     return image
+
+
+def get_filter_getter(model):
+    """
+    Return function to grab filter values for given input
+    """
+
+    gen = model.layers[1].gen
+
+    def get_filter(x):
+        f = gen.get_output(x).eval()
+        s = int(np.sqrt(f.shape[1]))
+        new_shape = [f.shape[0], s, s, f.shape[-2], f.shape[-1]]
+        return np.reshape(f, new_shape)
+
+    return get_filter
