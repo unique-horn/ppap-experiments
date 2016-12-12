@@ -7,7 +7,7 @@ import numpy as np
 from keras.utils import np_utils
 from keras.datasets import cifar10, mnist
 from ppap.layers.ppconv import PPConv
-from ppap.layers.HyperNeat import HyperNeat
+from ppap.layers.HyperNetwork import HyperNetwork
 
 if False:
   rows, cols, channels = 28, 28, 1
@@ -44,7 +44,7 @@ max_pool_1 = MaxPooling2D()(conv_1)
 # max_pool_1 = MaxPooling2D()(ppconv_1)
 # dropout_1 = Dropout(p=0.5)(max_pool_1)
 
-ppconv_2 = HyperNeat(weight_shape=(3, 3), hidden_dim=20,
+ppconv_2 = HyperNetwork(weight_shape=(3, 3), hidden_dim=20,
                   nb_filters=33, border_mode="valid")(max_pool_1)
 ppconv_2 = Activation(activation="relu")(ppconv_2)
 max_pool_2 = MaxPooling2D()(ppconv_2)
